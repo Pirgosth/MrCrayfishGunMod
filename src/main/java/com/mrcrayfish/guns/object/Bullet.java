@@ -50,6 +50,12 @@ public class Bullet
 
     public void tick(World world)
     {
+        // Handle null world, cause when disconnecting
+        if(world == null)
+        {
+            this.finished = true;
+            return;
+        }
         if(this.projectile == null)
         {
             Entity entity = world.getEntityByID(this.entityId);
